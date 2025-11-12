@@ -443,7 +443,7 @@
         <div class="practice">
             <h1>Change Attribute -- Rolling a dice </h1>
             <p> <input type="button" id="roll" value="roll" /> </p>
-            <p> <img src="img/die1.png"> </p>
+            <p> <img id = "die" src="img/die1.png"> </p>
             <table>
                 <tr>
                     <th>Result</th>
@@ -464,6 +464,35 @@
                     <td id="r6"></td>
                 </tr>
             </table>
+            <script>
+                // Practice
+                const myarray = [1, 6, 3, 9, 7, 10];
+                myarray.forEach(element => console.log(element));
+                for (var i in myarray){
+                    console.log(myarray[i]);
+                }
+                myarray.push(100);
+                myarray[1000] = 10;
+                console.log(myarray);
+                console.log(myarray.length);
+
+                // Do the dice game
+                var stats = [0, 0, 0, 0, 0, 0];
+                const rolldice = () => {
+                    var num = Math.floor(Math.random()*6 + 1);
+                    const imgE = document.getElementById("die");
+                    imgE.setAttribute('src',"img/die" + num + ".png");
+                    stats[1]++ // if number is 2, index will be 1, update
+                    var newid = "r" + num;
+                    var counter = 0;
+                    document.getElementById(newid).textContent = num;
+                
+                };
+
+                document.getElementById('roll').addEventListener('click', rolldice, false);
+
+
+            </script>
 
         </div>
 
@@ -486,6 +515,20 @@
                 <img src="img/usca5.jpg" alt="usca">
             </div>
             <script>
+                var index = 3;
+                var imagelist = document.querySelectorAll('.img-container-hide');
+                imagelist[3].setAttribute('class', "img-container");
+                // Event Handler
+                function changepic(){
+                    // Hide the current image
+                    imagelist[index].setAttribute('class', "img-container-hide");
+                    index ++;
+                    index = index % 5;
+
+                }
+
+                // Event
+                setInterval(changepic, 5000);
 
             </script>
 
@@ -522,6 +565,7 @@
                         <input id="lists" type="button" value="List current reservations">
                     </p>
                 </form>
+                <p id="listofbooking"> </p>
                 <script src="js/hotel.js"></script>
             </div>
 
