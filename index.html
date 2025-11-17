@@ -122,14 +122,18 @@
             <script>
                 function calculate() {
                     const fE = document.getElementsByName("addnum1")[0];
-                    var a = parseInt(fE);
-                    const sE = document.getElementsByName("addnum2")[0];
-                    var b = parseInt(sE);
+                    var a = parseInt(fE.value);
+
+                    const sE = document.getElementsByName("num2")[0];
+                    var b = parseInt(sE.value);
+
                     var c = a + b;
                     document.getElementById('result').innerHTML = "<b>" + c + "</b>";
                 }
             </script>
-            <p> <input type="text" name="addnum1" /> + <input type="text" name="num2">
+
+            <p> 
+                <input type="text" name="addnum1" /> + <input type="text" name="num2">
                 <input type="button" value="=" onclick="calculate();">
                 <label id="result"> ? </label>
             </p>
@@ -396,14 +400,28 @@
             <!--  Input number box -->
             <p> N = <input type="number" min="1" max="10" id="inputnumber2"> </p>
             <p>
-                <input type="button" value="Click for multiplication table">
+                <input type="button" id="multBtn" value="Click for multiplication table">
             </p>
 
             <!-- output section -->
-            <div id="loopoutput">
-
-
+            <div>
+                <p id="loopoutput"></p>
             </div>
+
+            <script>
+                function drill() {
+                    const N = parseInt(document.getElementById('inputnumber2').value);
+                    const output = document.getElementById('loopoutput');
+
+                    for (let i = 1; i <= 10; i++) {
+                          output.innerHTML += "<p>" + N + " x " + i + " = " + (N * i) + "</p>";
+                    }
+                    console.log("function worked");
+                }
+
+                document.getElementById('multBtn').addEventListener('click', drill, false);
+
+            </script>
 
             <script>
 
@@ -482,11 +500,11 @@
                     var num = Math.floor(Math.random()*6 + 1);
                     const imgE = document.getElementById("die");
                     imgE.setAttribute('src',"img/die" + num + ".png");
-                    stats[1]++ // if number is 2, index will be 1, update
+                    stats[num - 1]++ // if number is 2, index will be 1, update
                     var newid = "r" + num;
                     var counter = 0;
-                    document.getElementById(newid).textContent = num;
-                
+                    document.getElementById(newid).textContent = stats[num - 1];
+
                 };
 
                 document.getElementById('roll').addEventListener('click', rolldice, false);
@@ -524,6 +542,8 @@
                     imagelist[index].setAttribute('class', "img-container-hide");
                     index ++;
                     index = index % 5;
+
+                    imagelist[index].setAttribute('class', "img-container");
 
                 }
 

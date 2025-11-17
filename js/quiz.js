@@ -16,7 +16,10 @@ document.getElementById('B').textContent = num3.toString();
 
 // Update
 //document.querySelector('input[value="1"]')
-document.querySelector('input[value="4"]').nextSibling.nodeValue=num1.toString() + "-" + num2.toString() + "+" + num3.toString();
+document.querySelector('input[value="1"]').nextSibling.nodeValue = num1 + "-" + (num2 + num3);
+document.querySelector('input[value="2"]').nextSibling.nodeValue = num1 + "-" + (num2 - num3);
+document.querySelector('input[value="3"]').nextSibling.nodeValue = num1 + "-" + num2 + "-" + num3;
+document.querySelector('input[value="4"]').nextSibling.nodeValue = num1 + "-" + num2 + "+" + num3;
 
 // Element -- div answer box --- Click
 function changeStyle(event) {
